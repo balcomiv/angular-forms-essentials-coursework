@@ -1,0 +1,64 @@
+body {
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5rem;
+  color: #2d2d2d;
+  padding: 0;
+  margin: 0;
+  --container-width: 1024px;
+  --border-color: #ccc;
+  --success-color: green;
+  --error-color: red;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+header {
+  border-bottom: 1px solid var(--border-color);
+
+  a {
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+
+.container {
+  padding: 24px 12px 12px 12px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+nav {
+  float: left;
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid var(--border-color);
+
+  a {
+    padding: 12px;
+    display: block;
+  }
+}
+
+main {
+  padding: 0 36px 36px 36px;
+  width: 75%;
+  float: left;
+}
+
+header {
+  width: 100%;
+  display: block;
+  padding: 12px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
