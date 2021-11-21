@@ -6,7 +6,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { BasicHtmlFormComponent } from './basic-html-form.component';
 
 export default {
-  title: `Test / App Component`,
+  title: `CH 01 `,
   component: BasicHtmlFormComponent,
   decorators: [
     moduleMetadata({
