@@ -11,10 +11,14 @@
           "changeDetection": "OnPush",
           "inlineStyle": true,
           "inlineTemplate": true,
-          "skipTests": true
+          "skipTests": true,
+          "flat": true
         },
         "@schematics/angular:application": {
           "strict": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
         }
       },
       "root": "",
