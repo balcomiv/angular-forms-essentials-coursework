@@ -16,6 +16,9 @@ export default {
   parameters: {
     // controls: { hideNoControlsWarning: true },
     controls: { disabled: true },
+    options: {
+      showPanel: true,
+    },
   },
 } as Meta<BasicHtmlFormComponent>;
 
