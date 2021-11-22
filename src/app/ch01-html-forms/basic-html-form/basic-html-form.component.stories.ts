@@ -6,7 +6,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { BasicHtmlFormComponent } from './basic-html-form.component';
 
 export default {
-  title: `CH 01 `,
+  title: `CH 01 / Basic HTML Form`,
   component: BasicHtmlFormComponent,
   decorators: [
     moduleMetadata({
@@ -29,8 +29,8 @@ const Template: Story<BasicHtmlFormComponent> = (
   props: args,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {};
-// Primary.parameters = {
+export const basicHTMLForm = Template.bind({});
+basicHTMLForm.args = {};
+// basicHTMLForm.parameters = {
 //   controls: { hideNoControlsWarning: true },
 // };

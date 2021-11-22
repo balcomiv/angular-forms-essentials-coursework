@@ -22,5 +22,5 @@ const Template: Story<CustomValidationExampleComponent> = (
   props: args,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const customFormValidation = Template.bind({});
+customFormValidation.args = {};

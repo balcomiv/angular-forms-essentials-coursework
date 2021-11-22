@@ -29,9 +29,11 @@ const template: Story<InlineTextBasedInputsComponent> = (
   },
 });
 
-export const basic: Story<InlineTextBasedInputsComponent> = template.bind({});
-basic.args = {};
-basic.parameters = {
+export const inlineTextBasedInputs: Story<InlineTextBasedInputsComponent> = template.bind(
+  {}
+);
+inlineTextBasedInputs.args = {};
+inlineTextBasedInputs.parameters = {
   // options: {
   //   showPanel: false,
   // },

@@ -27,8 +27,8 @@ const Template: Story<InputValidationExampleComponent> = (
   props: args,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {};
-// Primary.parameters = {
+export const reactiveForms = Template.bind({});
+reactiveForms.args = {};
+// reactiveForms.parameters = {
 //   controls: { hideNoControlsWarning: true },
 // };
