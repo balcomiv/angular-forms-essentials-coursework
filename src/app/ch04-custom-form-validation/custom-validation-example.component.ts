@@ -10,7 +10,7 @@ import { passwordValidator } from './validators';
 @Component({
   selector: 'app-custom-validation-example',
   template: `
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <label for="password">Password</label>
       <input type="password" id="password" formControlName="password" />
 
@@ -43,5 +43,9 @@ export class CustomValidationExampleComponent {
     this.form = this.formBuilder.group({
       password: ['', [Validators.minLength(6), passwordValidator]],
     });
+  }
+
+  onSubmit(): void {
+    console.log('Submit: ', this.form);
   }
 }
