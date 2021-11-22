@@ -22,7 +22,8 @@ export function passwordValidator(
  * Angular expects a function that it can pass a form AbstractControl as the parameter and get back
     any potential validation errors. Since we have the entire FormGroup and not just a single FormControl
     we can compare any two values or conditions. In this example, we use a factory function pattern
-    that returns another internal function. This pattern is necessary
+    that returns another internal function. This pattern is necessary,  so we can return a function that
+    knows the names of the two input values we want to compare.
  */
 export function matchingInputsValidator(
   firstKey: string,
