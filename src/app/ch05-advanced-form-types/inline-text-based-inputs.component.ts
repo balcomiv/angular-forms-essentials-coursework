@@ -5,19 +5,19 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-inline-text-based-inputs',
   template: `
     <form [formGroup]="form">
-      <label for="name">Name</label>
+      <label for="name">Name (type="text")</label>
       <input id="name" type="text" />
 
-      <label for="color">Color</label>
+      <label for="color">Color (type="color")</label>
       <input id="color" type="color" />
 
-      <label for="password">Password</label>
+      <label for="password">Password (type="password")</label>
       <input id="password" type="password" />
 
-      <label for="age">Age</label>
+      <label for="age">Age (type="number")</label>
       <input id="age" type="number" />
 
-      <label for="date">Date</label>
+      <label for="date">Date (type="date")</label>
       <input id="date" type="date" />
     </form>
   `,
