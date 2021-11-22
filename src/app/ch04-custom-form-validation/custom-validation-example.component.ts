@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { passwordValidator } from './validators';
+import { matchingInputsValidator, passwordValidator } from './validators';
 
 @Component({
   selector: 'app-custom-validation-example',
@@ -24,10 +24,17 @@ import { passwordValidator } from './validators';
         </div>
       </ng-container>
 
+      <label for="confirm">Confirm Password</label>
+      <input type="confirm" id="confirm" formControlName="confirm" />
+
+      <div *ngIf="passwordsDoNotMatch" class="error">Passwords must match.</div>
+
       <button type="submit">Submit</button>
     </form>
 
     <pre>{{ password?.errors | json }}</pre>
+
+    <pre>{{ form.errors | json }}</pre>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,10 +46,24 @@ export class CustomValidationExampleComponent {
     return this.form.get('password');
   }
 
+  get passwordsDoNotMatch(): boolean {
+    return (
+      this.form.errors &&
+      this.form.errors.mismatch &&
+      this.form.controls.confirm.touched
+    );
+  }
+
   constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      password: ['', [Validators.minLength(6), passwordValidator]],
-    });
+    this.form = this.formBuilder.group(
+      {
+        password: ['', [Validators.minLength(6), passwordValidator]],
+        confirm: ['', Validators.required],
+      },
+      {
+        validator: matchingInputsValidator('password', 'confirm'),
+      }
+    );
   }
 
   onSubmit(): void {
