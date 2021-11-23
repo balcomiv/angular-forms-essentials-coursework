@@ -4,8 +4,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-radio',
   template: `
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <span class="label">Region (type="radio")</span>
+
+      <!-- 
+        On each input radio type, we use the formControlName with the same shared FormControl property.
+        We set the name attribute to associate the radios as a single group to toggle. Lastly, we set the value
+        attribute for Angular to set the FormControl value.
+        Angular smoothly works out of the box with all HTML input types. In a later chapter, we will cover
+        how to create custom Angular components that can bind to form controls as custom inputs
+      -->
       <label>
         <input
           formControlName="radio"
@@ -50,4 +58,8 @@ export class RadioComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onSubmit(): void {
+    console.log('Submit: ', this.form.value);
+  }
 }

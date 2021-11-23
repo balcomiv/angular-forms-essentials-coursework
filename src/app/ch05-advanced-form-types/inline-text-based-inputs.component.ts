@@ -1,25 +1,27 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-inline-text-based-inputs',
   template: `
     <form [formGroup]="form">
       <label for="name">Name (type="text")</label>
-      <input id="name" type="text" />
+      <input formControlName="name" id="name" type="text" />
 
       <label for="color">Color (type="color")</label>
-      <input id="color" type="color" />
+      <input formControlName="color" id="color" type="color" />
 
       <label for="password">Password (type="password")</label>
-      <input id="password" type="password" />
+      <input formControlName="password" id="password" type="password" />
 
       <label for="age">Age (type="number")</label>
-      <input id="age" type="number" />
+      <input formControlName="age" id="age" type="number" />
 
       <label for="date">Date (type="date")</label>
-      <input id="date" type="date" />
+      <input formControlName="date" id="date" type="date" />
     </form>
+
+    <pre>{{ form.value | json }}</pre>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +29,15 @@ import { FormGroup } from '@angular/forms';
 export class InlineTextBasedInputsComponent implements OnInit {
   form = new FormGroup({});
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      name: [''],
+      color: ['#1ab725'],
+      password: [''],
+      age: [null],
+      date: [null],
+    });
+  }
 
   ngOnInit(): void {}
 }

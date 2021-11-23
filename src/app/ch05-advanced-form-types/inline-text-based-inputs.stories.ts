@@ -1,5 +1,6 @@
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
+import { AdvancedFormTypesModule } from './advanced-form-types.module';
 import { InlineTextBasedInputsComponent } from './inline-text-based-inputs.component';
 
 export default {
@@ -8,7 +9,7 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [],
+      imports: [AdvancedFormTypesModule],
     }),
   ],
   parameters: {
