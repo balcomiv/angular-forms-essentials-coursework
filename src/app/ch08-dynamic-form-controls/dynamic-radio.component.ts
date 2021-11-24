@@ -1,35 +1,39 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Order, OrderService } from './order.service';
 
 @Component({
-  selector: 'app-dynamic-select',
+  selector: 'app-dynamic-radio',
   template: `
     <form
       [formGroup]="form"
       *ngIf="orders | async as orders; else loading"
       (ngSubmit)="onSubmit()"
     >
-      <label for="selectOrder">Select Order</label>
-      <select formControlName="selectOrder" id="orders">
-        <option *ngFor="let order of orders; let i = index" [value]="order.id">
-          {{ order.name }}
-        </option>
-      </select>
+      <span class="label">Radio Orders</span>
+      <label *ngFor="let order of orders">
+        <input
+          formControlName="radioOrder"
+          type="radio"
+          name="radioOrder"
+          [value]="order.id"
+        />
+        {{ order.name }}
+      </label>
 
       <button>Submit</button>
     </form>
 
     <pre>{{ form.value | json }}</pre>
 
-    <ng-template #loading> Loading User Data... </ng-template>
+    <ng-template #loading>Loading Orders...</ng-template>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicSelectComponent {
+export class DynamicRadioComponent implements OnInit {
   form: FormGroup;
 
   orders: Observable<Order[]>;
@@ -39,7 +43,7 @@ export class DynamicSelectComponent {
     private orderService: OrderService
   ) {
     this.form = this.formBuilder.group({
-      selectOrder: [],
+      radioOrder: [],
     });
 
     this.orders = this.orderService.loadOrders().pipe(
@@ -54,15 +58,13 @@ export class DynamicSelectComponent {
       */
 
       //  Side Effect -> Updating form value without changing/interfering with the stream
-      tap((orders) => this.form.patchValue({ selectOrder: orders[0].id }))
+      tap((orders) => this.form.patchValue({ radioOrder: orders[0].id }))
     );
   }
 
+  ngOnInit(): void {}
+
   onSubmit(): void {
-    //  With selects and radios, the value is always returned as a string type
-    console.log(
-      `is number: ${typeof this.form.value.selectOrder === 'number'}`
-    );
-    console.log('select order: ', this.form.value.selectOrder);
+    console.log('radio order: ', this.form.value.radioOrder);
   }
 }
